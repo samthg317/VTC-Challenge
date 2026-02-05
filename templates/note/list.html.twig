@@ -1,0 +1,26 @@
+{% extends 'base.html.twig' %}
+{% block title %}Notes{% endblock %}
+
+{% block body %}
+<h1>Your notes</h1>
+<p><a href="/notes/create">Create note</a></p>
+<form method="get" action="/notes">
+    <input type="text" name="q" placeholder="search" value="{{ q }}">
+    <select name="status">
+        <option value="">Any</option>
+        <option value="new" {% if status == 'new' %}selected{% endif %}>New</option>
+        <option value="todo" {% if status == 'todo' %}selected{% endif %}>Todo</option>
+        <option value="done" {% if status == 'done' %}selected{% endif %}>Done</option>
+    </select>
+    <input type="text" name="category" placeholder="category" value="{{ category }}">
+    <button type="submit">Filter</button>
+</form>
+
+<ul>
+    {% for n in notes %}
+        <li><strong>{{ n.title }}</strong> ({{ n.status }}) - {{ n.category }}<br>{{ n.content|raw }}</li>
+    {% else %}
+        <li>No notes yet</li>
+    {% endfor %}
+</ul>
+{% endblock %}

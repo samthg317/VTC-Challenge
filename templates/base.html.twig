@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="UTF-8">
+        <title>{% block title %}Welcome!{% endblock %}</title>
+        <link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 128 128%22><text y=%221.2em%22 font-size=%2296%22>⚫️</text></svg>">
+        {# Run `composer require symfony/webpack-encore-bundle` to start using Symfony UX #}
+        {% block stylesheets %}
+            {{ encore_entry_link_tags('app') }}
+            <style>
+                body { font-family: Arial, Helvetica, sans-serif; color: #333; background: #f6f8fa; }
+                header { padding:10px; border-bottom:1px solid #eee; background: #fff; }
+                main { max-width: 900px; margin: 20px auto; background: #fff; padding: 20px; border-radius: 6px; box-shadow: 0 2px 6px rgba(0,0,0,0.04); }
+                h1 { margin-top: 0; }
+                form label { display:block; margin-bottom:6px; font-weight:600; }
+                input[type="text"], input[type="email"], input[type="password"], textarea, select { width: 100%; padding:8px; box-sizing: border-box; margin-bottom:12px; border:1px solid #dfe3e8; border-radius:4px; }
+                button { background:#2d8cff; color:#fff; border:none; padding:10px 14px; border-radius:4px; cursor:pointer; }
+                a { color:#2d8cff; text-decoration:none }
+                .error { color: #7a0b0b; background: #ffecec; padding:10px; border-radius:4px; margin-bottom:12px; border:1px solid #f1c0c0; }
+            </style>
+        {% endblock %}
+
+        {% block javascripts %}
+            {{ encore_entry_script_tags('app') }}
+        {% endblock %}
+    </head>
+    <body>
+        <header style="padding:10px; border-bottom:1px solid #eee">
+            <a href="/">Home</a> |
+            <a href="/notes">Notes</a> |
+            {% if app.user %}
+                <span>Hi {{ app.user.email }}</span> | <a href="/logout">Logout</a>
+            {% else %}
+                <a href="/register">Register</a> | <a href="/login">Login</a>
+            {% endif %}
+        </header>
+        <main style="padding:20px">
+            {% block body %}{% endblock %}
+        </main>
+    </body>
+</html>

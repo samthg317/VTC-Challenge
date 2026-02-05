@@ -1,0 +1,19 @@
+{% extends 'base.html.twig' %}
+{% block title %}Create note{% endblock %}
+
+{% block body %}
+<h1>Create note</h1>
+<form method="post">
+    <label>Title: <input type="text" name="title"></label><br>
+    <label>Content: <textarea name="content"></textarea></label><br>
+    <label>Category: <input type="text" name="category"></label><br>
+    <label>Status: 
+        <select name="status">
+            <option value="new">New</option>
+            <option value="todo">Todo</option>
+            <option value="done">Done</option>
+        </select>
+    </label><br>
+    <button type="submit">Create</button>
+</form>
+{% endblock %}
