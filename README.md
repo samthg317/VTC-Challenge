@@ -1,4 +1,4 @@
-# Welcome to VTC Challenge
+# Welcome to VTC Challenge - Solved
 
 This challenge is created to test your knowledge of creating Symfony Applications with SPA Frontend build using ReactJS.
 In order to start working your solution, please clone this repository and create a copy under your namespace. 
